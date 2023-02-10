@@ -1,0 +1,28 @@
+.mybutton{
+    right:60px;
+    position: absolute;
+}
+
+.backButton{
+    left: 10px;
+    position:absolute;
+    width:200px;
+}
+
+.myTable{
+    border-top: lightgray;
+    border-style: solid;
+    border-right: lightgray;
+    // width: 1250px;
+    // position:absolute;
+    // right:90px;
+}
+
+// .backButton{
+//     bottom: 0px;
+//     position: absolute;
+// }
+
+body{
+    overflow: hidden;
+}

@@ -1,0 +1,93 @@
+<body>
+    <br>
+<h1>Inventory</h1>
+
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary mybutton" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    Add Item
+  </button>
+  
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Add Item</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <form [formGroup]="addItemInfo" (ngSubmit)="onSubmit()" >
+                <br>
+                <br>
+                <label class="form-label" for="itemUpc">UPC: </label>
+                <input class="form-control" type="text" id="itemUpc" formControlName="upc">
+                <br>
+                <br>
+                <label class="form-label" for="name">Name: </label>
+                <input class="form-control" type="text" id="name"  formControlName="itemName">
+                <br>
+                <br>
+                <label class="form-label" for="itemPrice">Item Price: </label>
+                <input class="form-control" type="text" id="itemPrice" formControlName="price" >
+                <br>
+                <br>
+                <label class="form-label" for="itemDiscount">Item Discount: </label>
+                <input class="form-control" type="text" id="itemDiscount" formControlName="discount">
+                <br>
+                <br>
+                <label class="form-label" for="itemQuantity">Quantity: </label>
+                <input class="form-control" type="text" id="itemQuantity"  formControlName="quantity">
+                <br>
+                <br>
+                <label class="form-label" for="itemDepartment">Department Name: </label>
+                <input class="form-control" type="text" id="itemDepartment" formControlName="departmentName">
+                <br>
+                <br>
+                 <label class="form-label" for="is_taxed">Taxed: </label>
+                <input class="form-control" type="text" id="is_taxed"  formControlName="isTaxed">
+                <br>
+                <br>
+                <label class="form-label" for="is_discontinued">Item Discontinued: </label>
+                <input class="form-control" type="text" id="is_discontinued" formControlName="isDiscontinued">
+                <br>
+                <br>
+                <input type = "submit" value = "submit" class="btn btn-secondary" data-bs-dismiss="modal">
+            </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+
+        </div>
+      </div>
+    </div>
+  </div>
+<!-- <button>add</button> -->
+<br>
+<br>
+<table class="table table-striped myTable">
+    <thead>
+      <tr>
+        <!-- <th scope="col">#</th> -->
+        <th scope="col">Name</th>
+        <th scope="col">UPC</th>
+        <th scope="col">Quantity</th>
+        <th scope="col">Price</th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of adminItems">
+        <td>{{item.name}}</td>
+        <td>{{item.upc}}</td>
+        <td>{{item.quantity}}</td>
+        <td>{{item.price}}</td>
+        <td> <button (click)="deleteItem(item.upc)" class="btn btn-danger ">Delete </button></td>
+       
+      </tr>
+    </tbody>
+  </table>
+
+  <button (click)="goBack()" class="btn btn-primary backButton">Back</button>
+
+
+</body>

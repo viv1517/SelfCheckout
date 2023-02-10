@@ -1,0 +1,57 @@
+<div>
+    <form [formGroup]="searchInfo" (ngSubmit)="onSubmit()">
+        <label class="form-label" for="upcSearch">UPC:</label>
+        <input class="form-control" type="text" id="upcSearch" formControlName="upc">
+        OR
+        <label class="form-label" for="departmentSearch">Department:</label>
+        <input class="form-control" type="text" id="departmentSearch" formControlName="department">
+        <br>
+        <input type = "submit" value = "submit" class="btn btn-secondary" >
+    </form>
+</div>
+<br>
+<h3 *ngIf="multipleFound">Please only search for one field at a time</h3>
+<br>
+<table class="table" *ngIf="showTable">
+    <thead>
+      <tr>
+        <th scope="col">UPC</th>
+        <th scope="col">Name</th>
+        <th scope="col">Price</th>
+        <th scope="col">Discount</th>
+        <th scope="col">Quantity</th>
+        <th scope="col">Taxed</th>
+        <th scope="col">Discontinued</th>
+        <th scope="col">Department</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngIf="upcFound">
+        <th scope="row">{{foundItem?.upc}}</th>
+        <td>{{foundItem?.name}}</td>
+        <td>{{foundItem?.price}}</td>
+        <td>{{foundItem?.discount}}</td>
+        <th scope="row">{{foundItem?.quantity}}</th>
+        <td>{{foundItem?.isTaxed}}</td>
+        <td>{{foundItem?.isDiscontinued}}</td>
+        <td>{{foundItem?.department}}</td>
+      </tr>
+    </tbody>
+
+    <tbody *ngIf="departmentFound">
+        <tr *ngFor="let item of departmentItems">
+          <th scope="row">{{item.upc}}</th>
+          <td>{{item.name}}</td>
+          <td>{{item.price}}</td>
+          <td>{{item.discount}}</td>
+          <th scope="row">{{item.quantity}}</th>
+          <td>{{item.isTaxed}}</td>
+          <td>{{item.isDiscontinued}}</td>
+          <td>{{item.department}}</td>
+        </tr>
+      </tbody>
+  </table>
+
+  <br>
+
+  <button (click)="goBack()" class="btn btn-primary backButton">Back</button>

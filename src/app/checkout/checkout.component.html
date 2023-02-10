@@ -1,0 +1,18 @@
+<h1>Checkout</h1>
+<div>
+    <h3>Add to Cart</h3>
+    <form [formGroup]="cartInfo" (ngSubmit)="onSubmit()">
+        <label for="upcSearch">UPC:</label>
+        <input type="text" id="upcSearch" formControlName="upc">
+        <input type = "submit" value = "submit">
+    </form>
+</div>
+
+
+
+<button (click)="getSummary()">Checkout</button>
+
+<app-cart-component [itemsToDispaly]="itemsToDispaly" [subtotal]="subtotal"></app-cart-component>
+
+
+

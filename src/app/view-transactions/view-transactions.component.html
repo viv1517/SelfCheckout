@@ -1,0 +1,38 @@
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Transaction ID</th>
+        <th scope="col">Date</th>
+        <th scope="col">Items</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let transaction of transactions">
+        <th scope="row">{{transaction.id}}</th>
+        <td>{{transaction.date}}</td>
+        <td>
+            <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">UPC</th>
+                    <th scope="col">Item Name</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Quantity</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let item of transaction.items">
+                    <th scope="row">{{item.id}}</th>
+                    <td>{{item.name}}</td>
+                    <td>{{item.priceBought}}</td>
+                    <td>{{item.quantityBought}}</td>
+                  </tr>
+                </tbody>
+              </table>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <button (click)="goBack()" class="btn btn-primary backButton">Back</button>
