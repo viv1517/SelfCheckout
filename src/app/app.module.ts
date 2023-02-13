@@ -13,14 +13,14 @@ import { DepartmentListComponent } from './department-list/department-list.compo
 import { SearchItemsComponent } from './search-items/search-items.component';
 import { ViewTransactionsComponent } from './view-transactions/view-transactions.component';
 import { CartComponentComponent } from './cart-component/cart-component.component';
-// import { DepartmentListComponent } from './department-list/department-list.component';
+import { DxButtonModule, DxCheckBoxModule, DxDataGridModule, DxLookupModule, DxSelectBoxModule, DxSpeedDialActionModule, DxTreeListModule } from 'devextreme-angular';
+import { DataGridComponent } from './data-grid/data-grid.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     CheckoutComponent,
-    // ScannerComponent,
     AdminComponent,
     InventoryTableComponent,
     AddItemComponent,
@@ -28,7 +28,9 @@ import { CartComponentComponent } from './cart-component/cart-component.componen
     SearchItemsComponent,
     ViewTransactionsComponent,
     CartComponentComponent,
-    // DepartmentListComponent
+    DataGridComponent,
+    
+    
   ],
   imports: [
     BrowserModule,
@@ -36,7 +38,14 @@ import { CartComponentComponent } from './cart-component/cart-component.componen
     ZXingScannerModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    DxDataGridModule,
+    DxSpeedDialActionModule,
+    DxSelectBoxModule,
+    DxCheckBoxModule,
+    DxLookupModule,
+    DxTreeListModule,
+    DxButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]

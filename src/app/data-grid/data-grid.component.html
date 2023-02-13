@@ -1,0 +1,79 @@
+<head>
+    <link rel="dx-theme" data-theme="generic.light" href="css/dx.light.css" data-active="true">
+    <link rel="dx-theme" data-theme="generic.dark" href="css/dx.dark.css" data-active="false">
+    <link rel="dx-theme" data-theme="generic.contrast" href="css/dx.contrast.css" data-active="false">
+</head>
+<!-- <a (click)="switchTheme()">Change Theme!  
+</a>  -->
+<dx-data-grid
+id="gridContainer"
+[dataSource]="dataSource"
+(onSelectionChanged)="selectedChanged($event)">
+<dxo-grouping 
+    [contextMenuEnabled]="true"> 
+</dxo-grouping>
+
+    <dxo-group-panel 
+        [visible]="true"
+        [allowColumnDragging]="false"> <!-- or "auto" -->
+    </dxo-group-panel>
+    <!-- <dxo-export [enabled]="true"></dxo-export> -->
+<dxo-filter-row [visible]="true"></dxo-filter-row>
+<dxi-column dataField="Upc" caption="Upc" [allowEditing]="false"></dxi-column>
+<dxi-column dataField="ItemName" [allowFiltering]="true" ></dxi-column>
+<dxi-column dataField="Price"></dxi-column>
+<dxi-column dataField="Quantity" [width]="130"></dxi-column>
+<dxi-column dataField="Discount" [width]="125" ></dxi-column>
+<dxi-column dataField="DepartmentId" [width]="125" caption="Dep">
+  <dxo-lookup
+    [dataSource]="departments"
+    displayExpr="DepartmentName"
+    valueExpr="Id"
+  ></dxo-lookup>
+</dxi-column>
+<dxi-column dataField="IsTaxed" [width]="125" ></dxi-column>
+<dxi-column dataField="IsDiscontinued" [width]="125" ></dxi-column>
+
+<dxo-selection mode="single"></dxo-selection>
+  <dxo-paging [enabled]="false"></dxo-paging>
+  <dxo-editing mode="popup">
+    <dxo-texts confirmDeleteMessage=""></dxo-texts>
+  </dxo-editing>
+
+
+  <dxo-paging 
+  [enabled]="true"
+  [pageSize]="10"
+  [pageIndex]="1"> 
+  [showNavigationButtons]="true"
+  [showPageSizeSelector]="true"
+</dxo-paging>
+
+<dxo-export [enabled]="true" [allowExportSelectedData]="true"></dxo-export>
+</dx-data-grid>
+
+<dx-speed-dial-action
+  icon="add"
+  label="Add row"
+  [index]="1"
+  (onClick)="addRow()"
+>
+</dx-speed-dial-action>
+<dx-speed-dial-action
+  icon="trash"
+  label="Delete row"
+  [index]="2"
+  [visible]="selectedRowIndex !== -1"
+  (onClick)="deleteRow()"
+>
+</dx-speed-dial-action>
+<dx-speed-dial-action
+  icon="edit"
+  label="Edit row"
+  [index]="3"
+  [visible]="selectedRowIndex !== -1"
+  (onClick)="editRow()"
+>
+</dx-speed-dial-action>
+
+
